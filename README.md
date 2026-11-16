@@ -33,9 +33,9 @@ A machine-learning project that predicts whether a person's annual income is **`
 
 | Model | Accuracy | F1 (>50K) | ROC-AUC |
 |---|---|---|---|
-| Baseline (always `<=50K`) | | | |
-| Random Forest (untuned) | | | |
-| Random Forest (tuned) | | | |
+| Baseline (always `<=50K`) | 76% | 0 | 50% |
+| Random Forest (untuned) | 83% | 68% | 89% |
+| Random Forest (tuned) | 82% | 69% | 91% |
 
 ## Run locally
 
