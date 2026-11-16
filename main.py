@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 import pandas as pd
 from pydantic import BaseModel, Field, ConfigDict
@@ -9,8 +10,17 @@ import joblib
 
 app = FastAPI(title='Income Prediction API', version='1.0')
 
+# CORS: lets index.html call the API when it is opened from a file or another address
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],   # fine for local development; restrict before deploying
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 #universal model loading
 MODEL_PATH = Path(__file__).parent / 'model.pkl'
+INDEX_PATH = Path(__file__).parent / 'index.html'
 model = joblib.load(MODEL_PATH)
 
 #Literal restricts each categorical field to the exact values the model was trained on. User can only input values which are in this literals for this    

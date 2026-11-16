@@ -8,7 +8,7 @@ WORKDIR /app
 # Install dependencies first so Docker can cache this layer
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY main.py model.pkl ./
+COPY main.py model.pkl index.html ./
 
 # Run as a non-root user
 RUN useradd --create-home appuser
